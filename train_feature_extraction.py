@@ -17,9 +17,9 @@ y = data['labels']
 
 print("data size X,y: ", len(X), len(y))
 #temp for testing
-X = X[0:500]
-y = y[0:500]
-print("truncating to ", len(X), "data items")
+#X = X[0:500]
+#y = y[0:500]
+#print("truncating to ", len(X), "data items")
 
 # TODO: Split data into training and validation sets.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)  #random_state is seed for random sampling
@@ -89,8 +89,8 @@ EPOCHS = 10         #??
 BATCH_SIZE = 128    #??
 
 # temp testing
-EPOCHS = 4
-print("EPOCHS: ", EPOCHS)
+#EPOCHS = 4
+#print("EPOCHS: ", EPOCHS)
 
 
 # loss
@@ -129,7 +129,7 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     num_examples = len(X_train)
     #temp testing
-    num_examples = 100
+    #num_examples = 100
     print("training", num_examples, "examples" )
 
     print("Training...")
@@ -138,7 +138,7 @@ with tf.Session() as sess:
     for i in range(EPOCHS):
       X_train, y_train = shuffle(X_train, y_train)
       for offset in range (0, num_examples, BATCH_SIZE):
-          print("batch ", offset/BATCH_SIZE +1, "of ", num_examples/BATCH_SIZE +1)
+          print("     batch ", 1+offset//BATCH_SIZE, "of ", 1+ num_examples/BATCH_SIZE)
           end = offset + BATCH_SIZE
           batch_x = X_train[offset:end]
           batch_y = y_train[offset:end]
