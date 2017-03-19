@@ -7,7 +7,7 @@ from   alexnet import AlexNet
 
 #set training values
 mu = 0              #??
-sigma = 0.1         #??  #try .01 - solution uses .01
+sigma = .01   #0.1  #??  #try .01 - solution uses .01
 rate  = 0.001       #??
 EPOCHS = 10         #??
 # temp testing
@@ -51,7 +51,7 @@ y = y[0:400]
 print("truncating to ", len(X), "data items")
 
 # TODO: Split data into training and validation sets.
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)  #random_state is seed for random sampling
+X_train, X_validate, y_train, y_validate = train_test_split(X, y, test_size=0.33, random_state=42)  #random_state is seed for random sampling
 
 # TODO: Define placeholders and resize operation.
 x_shape = (None,) + X_train.shape[1:]
@@ -157,8 +157,8 @@ with tf.Session() as sess:
                               labels:   y_train[offset:end]})
 
       # evaluate the model, print results
-      # ??? on testing set ?? This is within training loop !
-      validation_accuracy, validation_loss = evaluate(X_test, y_test)
+      # on validation set -- This is within training loop !
+      validation_accuracy, validation_loss = evaluate(X_validate, y_validate)
       print("EPOCH {} ...".format(i+1))
       print("Time: {:.3f} minutes".format( float((time.time()-t0)/60)) )
       print("Validation Accuracy = {:.3f}".format(validation_accuracy))
