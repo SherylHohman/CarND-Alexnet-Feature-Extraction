@@ -6,12 +6,12 @@ from   sklearn.utils import shuffle
 from   alexnet import AlexNet
 
 #set training values
-mu = 0              #??
-sigma = .01   #0.1  #??  #try .01 - solution uses .01
-rate  = 0.001       #??
-EPOCHS = 10         #??
+mu = 0
+sigma =  .01        #0.1   - solution uses .01
+rate  = 0.001
+EPOCHS = 10
 # temp testing
-EPOCHS = 4
+#EPOCHS = 4
 print("EPOCHS: ", EPOCHS)
 BATCH_SIZE = 128    #??
 
@@ -46,9 +46,9 @@ y = data['labels']
 
 print("data size X, y: ", len(X), len(y))
 #temp truncate data for initial testing
-X = X[0:400]
-y = y[0:400]
-print("truncating to ", len(X), "data items")
+#X = X[0:400]
+#y = y[0:400]
+#print("truncating to ", len(X), "data items")
 
 # TODO: Split data into training and validation sets.
 X_train, X_validate, y_train, y_validate = train_test_split(X, y, test_size=0.33, random_state=42)  #random_state is seed for random sampling
